@@ -13,3 +13,20 @@ menuBtn.addEventListener("click", () => {
     menuIcon.alt = "Close";
   }
 });
+
+const slider = document.getElementById("edition-slider");
+const dots = document.querySelectorAll(".dot");
+
+slider.addEventListener("scroll", () => {
+  const cardWidth = slider.children[0].offsetWidth + 20; // card + gap
+
+  const page = Math.round(slider.scrollLeft / (cardWidth * 2));
+
+  dots.forEach((dot) => {
+    dot.classList.remove("bg-black");
+    dot.classList.add("bg-gray-400");
+  });
+
+  dots[page % 3].classList.remove("bg-gray-400");
+  dots[page % 3].classList.add("bg-black");
+});
