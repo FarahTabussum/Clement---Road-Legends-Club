@@ -18,15 +18,15 @@ const slider = document.getElementById("edition-slider");
 const dots = document.querySelectorAll(".dot");
 
 slider.addEventListener("scroll", () => {
-  const cardWidth = slider.children[0].offsetWidth + 20; // card + gap
-
-  const page = Math.round(slider.scrollLeft / (cardWidth * 2));
+  const page = Math.round(slider.scrollLeft / slider.clientWidth);
 
   dots.forEach((dot) => {
     dot.classList.remove("bg-black");
-    dot.classList.add("bg-gray-400");
+    dot.classList.add("bg-gray-300");
   });
 
-  dots[page % 3].classList.remove("bg-gray-400");
-  dots[page % 3].classList.add("bg-black");
+  if (page < dots.length) {
+    dots[page].classList.remove("bg-gray-300");
+    dots[page].classList.add("bg-black");
+  }
 });
