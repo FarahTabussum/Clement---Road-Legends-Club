@@ -55,25 +55,3 @@ testimonialSlider.addEventListener("scroll", () => {
     testimonialDots[page].classList.add("bg-amber-50");
   }
 });
-
-const slider = document.querySelector("#receive-slider .flex");
-
-const cards = slider.children;
-
-let current = 0;
-
-document.getElementById("receive-next").onclick = () => {
-  if (current < cards.length - 1) {
-    current++;
-
-    slider.style.transform = `translateX(-${current * 100}%)`;
-  }
-};
-
-document.getElementById("receive-prev").onclick = () => {
-  if (current > 0) {
-    current--;
-
-    slider.style.transform = `translateX(-${current * 100}%)`;
-  }
-};
