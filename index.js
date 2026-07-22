@@ -30,3 +30,28 @@ slider.addEventListener("scroll", () => {
     dots[page].classList.add("bg-black");
   }
 });
+
+// black dots
+
+const testimonialSlider = document.getElementById("testimonial-slider");
+const testimonialDots = document.querySelectorAll(".testimonial-dot");
+
+testimonialSlider.addEventListener("scroll", () => {
+  const page = Math.round(
+    testimonialSlider.scrollLeft / testimonialSlider.clientWidth,
+  );
+
+  testimonialDots.forEach((dot) => {
+    // Remove BOTH possible colors first
+    dot.classList.remove("bg-amber-50", "bg-gray-400");
+
+    // Make every dot gray
+    dot.classList.add("bg-gray-400");
+  });
+
+  // Make only the active dot amber
+  if (testimonialDots[page]) {
+    testimonialDots[page].classList.remove("bg-gray-400");
+    testimonialDots[page].classList.add("bg-amber-50");
+  }
+});
