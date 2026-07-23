@@ -75,3 +75,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// modal
+
+const openBtns = document.querySelectorAll(
+  "#openLockModal, #openLockModalMobile",
+);
+
+const closeBtn = document.getElementById("closeLockModal");
+
+const modal = document.getElementById("lockModal");
+const overlay = document.getElementById("lockOverlay");
+
+openBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+      overlay.classList.remove("opacity-0");
+      modal.classList.remove("translate-x-full");
+    });
+  });
+});
+
+function closeModal() {
+  overlay.classList.add("opacity-0");
+  modal.classList.add("translate-x-full");
+
+  setTimeout(() => {
+    overlay.classList.add("hidden");
+  }, 300);
+}
+
+closeBtn.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+// quantity
+
+const minusBtn = document.getElementById("minusBtn");
+const plusBtn = document.getElementById("plusBtn");
+const quantity = document.getElementById("quantity");
+
+let count = 1;
+
+plusBtn.addEventListener("click", () => {
+  count++;
+  quantity.textContent = count;
+});
+
+minusBtn.addEventListener("click", () => {
+  if (count > 1) {
+    count--;
+    quantity.textContent = count;
+  }
+});
