@@ -55,3 +55,22 @@ testimonialSlider.addEventListener("scroll", () => {
     testimonialDots[page].classList.add("bg-amber-50");
   }
 });
+
+// FAQ dropdown
+
+const faqButtons = document.querySelectorAll(".faq-btn");
+
+faqButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector(".faq-icon");
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      icon.style.transform = "rotate(0deg)";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      icon.style.transform = "rotate(45deg)"; // plus becomes an X
+    }
+  });
+});
